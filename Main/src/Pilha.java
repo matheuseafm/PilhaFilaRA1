@@ -1,7 +1,7 @@
 import java.time.LocalDateTime;
 
 public class Pilha {
-    private static Node top;
+    private static NodePilha top;
 
     public Pilha() {
         top = null;
@@ -9,19 +9,19 @@ public class Pilha {
 
     // Método para adicionar uma nova solicitação na pilha
     public static void push(int id, String description, LocalDateTime dateTime) {
-        Node newNode = new Node(id, description, dateTime);
-        newNode.next = top;
-        top = newNode;
+        NodePilha newNodePilha = new NodePilha(id, description, dateTime);
+        newNodePilha.next = top;
+        top = newNodePilha;
         System.out.println("Solicitação adicionada: " + description);
     }
 
     // Método para remover a solicitação do topo da pilha
-    public static Node pop() {
+    public static NodePilha pop() {
         if (top == null) {
             System.out.println("A pilha está vazia.");
             return null;
         }
-        Node removedNode = top;
+        NodePilha removedNode = top;
         top = top.next;
         System.out.println("Solicitação removida: " + removedNode.description);
         return removedNode;
@@ -34,7 +34,7 @@ public class Pilha {
             return;
         }
 
-        Node current = top;
+        NodePilha current = top;
         while (current != null) {
             System.out.println("ID: " + current.id + ", Descrição: " + current.description + ", Data e Hora: " + current.dateTime);
             current = current.next;

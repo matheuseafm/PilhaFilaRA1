@@ -1,12 +1,12 @@
 import java.time.LocalDateTime;
 
-public class Node {
+public class NodePilha {
     int id;
     String description;
     LocalDateTime dateTime;
-    Node next;
+    NodePilha next;
 
-    public Node(int id, String description, LocalDateTime dateTime) {
+    public NodePilha(int id, String description, LocalDateTime dateTime) {
         this.id = id;
         this.description = description;
         this.dateTime = dateTime;
