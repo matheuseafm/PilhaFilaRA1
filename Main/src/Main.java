@@ -1,8 +1,8 @@
 import java.time.LocalDateTime;
+import entities.*;
 
 public class Main {
     public static void main(String[] args) {
-
 
         // Adicionando solicitações
         Pilha.push(1, "Solicitação 1", LocalDateTime.now());
@@ -20,13 +20,15 @@ public class Main {
         System.out.println("\nEstado da pilha após remoção:");
         Pilha.displayStack();
 
-        //Adicionando elementos à fila
+        // Adicionando elementos à fila
         Fila fila = new Fila();
 
         // Adicionando clientes à fila
-        fila.enqueue("Alice", 101, "Consulta");
-        fila.enqueue("Bob", 102, "Retorno de Exames");
-        fila.enqueue("Carlos", 103, "Consulta");
+        fila.enqueue("Alice", "Consulta");
+        fila.enqueue("Bob", "Retorno de Exames");
+        fila.enqueue("Carlos", "Consulta");
+        fila.enqueue("Joao", "Consulta");
+        fila.enqueue("Kevin", "Consulta");
 
         // Exibindo a fila atual
         System.out.println("\nEstado atual da fila:");
@@ -34,10 +36,10 @@ public class Main {
 
         // Atendendo o próximo cliente
         fila.dequeue();
+        fila.dequeue();
 
         // Exibindo a fila após atendimento
         System.out.println("\nEstado da fila após atendimento:");
         fila.displayQueue();
-
     }
 }
