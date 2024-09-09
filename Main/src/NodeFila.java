@@ -1,10 +1,8 @@
-package entities;
-
 public class NodeFila {
     String name;
     int id; // Senha do cliente
     String reason;
-    NodeFila next;
+    NodeFila next; //Aponta para o próximo nó da fila
 
     public NodeFila(String name, int id, String reason) {
         this.name = name;
@@ -13,3 +11,4 @@ public class NodeFila {
         this.next = null;
     }
 }
+

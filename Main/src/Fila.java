@@ -1,9 +1,7 @@
-package entities;
-
 public class Fila {
     private NodeFila front; // Aponta para o primeiro elemento da fila
-    private NodeFila rear; // Aponta para o último elemento da fila
-    private int nextSenha; // Contador para o próximo número de senha
+    private NodeFila rear;  // Aponta para o último elemento da fila
+    private int nextSenha;  // Contador para o próximo número de senha
 
     public Fila() {
         this.front = null;
@@ -38,7 +36,7 @@ public class Fila {
         NodeFila removedNode = front;
         front = front.next;
 
-        // Se a frente da fila ficar vazia após a remoção, ajusta o ponteiro traseiro
+        // Se a fila ficar vazia após a remoção, ajusta o ponteiro traseiro
         if (front == null) {
             rear = null;
         }
@@ -51,13 +49,19 @@ public class Fila {
     public void displayQueue() {
         if (front == null) {
             System.out.println("A fila está vazia.");
-            return;
-        }
-
-        NodeFila current = front;
-        while (current != null) {
-            System.out.println("Nome: " + current.name + ", Senha: " + current.id + ", Motivo: " + current.reason);
-            current = current.next;
+        } else {
+            displayQueueRecursively(front);
         }
     }
+    
+    //Adicionado para não utilizar while e sim Recursão
+    private void displayQueueRecursively(NodeFila current) {
+        if (current == null) {
+            return; // Condição de parada
+        }
+        System.out.println("Nome: " + current.name + ", Senha: " + current.id + ", Motivo: " + current.reason);
+        displayQueueRecursively(current.next); // Chama a função recursivamente para o próximo nó
+    }
+    
 }
+
