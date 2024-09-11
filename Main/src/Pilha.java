@@ -34,6 +34,7 @@ public class Pilha {
             return;
         }
 
+<<<<<<< Updated upstream
         NodePilha current = top;
         while (current != null) {
             System.out.println("ID: " + current.id + ", Descrição: " + current.description + ", Data e Hora: " + current.dateTime);
@@ -41,3 +42,6 @@ public class Pilha {
         }
     }
 }
+=======
+}
+>>>>>>> Stashed changes
