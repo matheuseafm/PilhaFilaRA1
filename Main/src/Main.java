@@ -1,10 +1,12 @@
 import java.time.LocalDateTime;
+import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
         // Adicionando solicitações
 
         Pilha pilha = new Pilha();
+        Scanner scanner = new Scanner(System.in);
         
         pilha.push(1, "Instalação de Software", LocalDateTime.now());
         pilha.push(2, "Manutenção preventiva", LocalDateTime.now());
@@ -16,21 +18,6 @@ public class Main {
         pilha.push(8, "Restauração de dados", LocalDateTime.now());
         pilha.push(9, "Consulta técnica", LocalDateTime.now());
 
-        // Exibindo a pilha atual
-        System.out.println("\nEstado atual da pilha:\n");
-        pilha.displayStack();
-        System.out.println("\nRemovendo elementos da Pilha:\n");
-
-        // Removendo uma solicitação
-        pilha.pop();
-        pilha.pop();
-        pilha.pop();
-        pilha.pop();
-
-        // Exibindo a pilha após remoção
-        System.out.println("\nEstado da pilha após remoção:\n");
-        pilha.displayStack();
-        System.out.println();
 
         // Adicionando elementos à fila
         Fila fila = new Fila();
@@ -51,21 +38,75 @@ public class Main {
         fila.enqueue("Joao", "Consulta");
         fila.enqueue("Kevin", "Consulta");
 
-        // Exibindo a fila atual
-        System.out.println("\nEstado atual da fila:\n");
-        fila.displayQueue();
-        System.out.println();
+          // Menu para interação com o usuário
+          while (true) {
+            System.out.println("\nEscolha uma opção:");
+            System.out.println("1 - Adicionar elemento na Pilha");
+            System.out.println("2 - Remover elemento da Pilha");
+            System.out.println("3 - Exibir estado atual da Pilha");
+            System.out.println("4 - Adicionar cliente na Fila");
+            System.out.println("5 - Atender (remover) cliente da Fila");
+            System.out.println("6 - Exibir estado atual da Fila");
+            System.out.println("7 - Sair");
+            
+            int opcao = scanner.nextInt();
+            scanner.nextLine(); // Consumir o '\n'
 
-        // Atendendo o próximo cliente
-        fila.dequeue();
-        fila.dequeue();
-        fila.dequeue();
-        fila.dequeue();
-        fila.dequeue();
-        fila.dequeue();
+            switch (opcao) {
+                case 1:
+                    // Adiciona solicitação à Pilha
+                    System.out.print("Digite o ID da solicitação: ");
+                    int id = scanner.nextInt();
+                    scanner.nextLine(); // Consumir o '\n'
+                    System.out.print("Digite a descrição da solicitação: ");
+                    String descricao = scanner.nextLine();
+                    pilha.push(id, descricao, LocalDateTime.now());
+                    System.out.println("Solicitação adicionada à Pilha.");
+                    break;
 
-        // Exibindo a fila após atendimento
-        System.out.println("\nEstado da fila após atendimento:\n");
-        fila.displayQueue();
+                case 2:
+                    // Remove o último elemento da Pilha
+                    pilha.pop();
+                    System.out.println("Solicitação removida da Pilha.");
+                    break;
+
+                case 3:
+                    // Exibe o estado atual da Pilha
+                    System.out.println("\nEstado atual da Pilha:\n");
+                    pilha.displayStack();
+                    break;
+
+                case 4:
+                    // Adiciona cliente à Fila
+                    System.out.print("Digite o nome do cliente: ");
+                    String nome = scanner.nextLine();
+                    System.out.print("Digite a solicitação do cliente: ");
+                    String solicitacao = scanner.nextLine();
+                    fila.enqueue(nome, solicitacao);
+                    System.out.println("Cliente adicionado à Fila.");
+                    break;
+
+                case 5:
+                    // Remove o próximo cliente da Fila
+                    fila.dequeue();
+                    System.out.println("Cliente atendido.");
+                    break;
+
+                case 6:
+                    // Exibe o estado atual da Fila
+                    System.out.println("\nEstado atual da Fila:\n");
+                    fila.displayQueue();
+                    break;
+
+                case 7:
+                    // Encerra o programa
+                    System.out.println("Encerrando...");
+                    scanner.close();
+                    return;
+
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+            }
+
     }
-}
+}}
